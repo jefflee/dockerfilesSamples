@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  mongo:
+    image: mongo:4.4
+    container_name: mongo_single_replica
+    command: mongod --replSet rs0 --bind_ip_all
+    ports:
+      - 27017:27017
+    volumes:
+      - D:\Jeff\DockerMountFolder\mongodb_single_replica:/data/db
+    networks:
+      - mongo-network
+
+networks:
+  mongo-network:
+    driver: bridge
